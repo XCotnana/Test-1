@@ -23,8 +23,8 @@ untuk menambahkan gambar
 Jika selesai ketik *selesai*, jika ingin membatalkan
 ketik *cancel*
 
-${monospace(`Image To PDF by RzkyFdlh`)}`);
-		await conn.sendImage(msg.from, "https://telegra.ph/file/009c083e25041eee7a30e.jpg", msg, {
+${monospace(`Image To PDF By Hyzer Official`)}`);
+		await conn.sendImage(msg.from, "https://uploader.caliph.my.id/file/ywRQXZylAL.jpg", msg, {
 			caption: "Contoh Penggunaan / Usage Example",
 		});
 	},
