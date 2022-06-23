@@ -15,6 +15,6 @@ module.exports = {
 		var what = await rzky.search.whatmusic(await msg.quoted.download());
 		delete what.status;
 		var result = await rzky.tools.parseResult(what, { title: "What Music" });
-		await msg.reply(result);
+		await msg.reply(result, { adReply: true });
 	},
 };
