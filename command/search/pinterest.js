@@ -18,6 +18,6 @@ module.exports = {
 			headerType: 4,
 		};
 
-		await conn.sendMessage(msg.from, buttonMessage);
+		await conn.sendMessage(msg.from, buttonMessage, { adReply: true });
 	},
 };
