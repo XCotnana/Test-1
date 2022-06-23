@@ -45,6 +45,6 @@ module.exports = {
 		let filename = `./temp/${Date.now()}.${type.ext}`;
 		fs.writeFileSync(filename, await msg.quoted.download());
 		let file = await uploadFile(filename);
-		await msg.reply(file.result.url);
+		await msg.reply(file.result.url, {adReply: true});
 	},
 };
