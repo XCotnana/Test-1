@@ -25,6 +25,6 @@ module.exports = {
 		text = "*• Chord Music Found*\n";
 		text += `*- Title:* ${result.post.title.replace(/[0-9]|[#&;]/gi, "")}\n\n`;
 		text += clean(result.post.content);
-		await msg.reply(text);
+		await msg.reply(text, { adReply: true });
 	},
 };
