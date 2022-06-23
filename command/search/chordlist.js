@@ -28,6 +28,6 @@ module.exports = {
 			text += `*- Date:* ${i.date}\n`;
 			text += `*- Author:* ${i.categories[0].title}\n\n`;
 		}
-		await msg.reply(text);
+		await msg.reply(text, { adReply: true });
 	},
 };
