@@ -48,69 +48,64 @@ module.exports = {
 					category[cteg].push(info);
 				}
 			}
-			let str = `「 *${config.namebot}* 」
-	
-◪ *Time*
-❏ ${moment.tz(config.timezone).format("HH:mm:ss")}
+			let str = `*${config.namebot}*
+			
+*SERVER INFO*
+• Time: ${moment.tz(config.timezone).format("HH:mm:ss")}
+• Speed: ${processTime(msg.messageTimestamp, moment())} _seconds_
+• Date: ${moment.tz(config.timezone).format("dddd, DD/MM/YYYY")}
 
-◪ *Speed*
-❏ ${processTime(msg.messageTimestamp, moment())} _seconds_
+*INFO USER*
+• Nomer: ${msg.sender.split("@")[0]} 
+• Nama: ${conn.getName(msg.sender)}
+• Status: ${isPremium ? "Premium" : owner ? "Owner" : "Free"}
+${isPremium ? `• Expired: 「 ${xes.days} D ${xes.hours} H ${xes.minutes} M 」\n` : ""}
 
-◪ *Date*
-❏ ${moment.tz(config.timezone).format("dddd, DD/MM/YYYY")}
-
-◪ *INFO USER*
-❏ Nomer: 「  ${msg.sender.split("@")[0]} 」
-❏ Nama: 「  ${conn.getName(msg.sender)} 」
-❏ Status: 「 ${isPremium ? "Premium" : owner ? "Owner" : "Standar"} 」
-${isPremium ? `❏ Expired: 「 ${xes.days} D ${xes.hours} H ${xes.minutes} M 」\n` : ""}
-
-◪ *Fitur terpopuler saat ini*
+*POPULAR HIT TODAY*
 ${
 	dashboard[0]
-		? `1. *${prefix}${dashboard[0].name}* dipakai sebanyak *${dashboard[0].success + dashboard[0].failed}* kali`
+		? `1. *${prefix}${dashboard[0].name}* = ${dashboard[0].success + dashboard[0].failed} Used`
 		: ``
 }
 ${
 	dashboard[1]
-		? `2. *${prefix}${dashboard[1].name}* dipakai sebanyak *${dashboard[1].success + dashboard[1].failed}* kali`
+		? `2. *${prefix}${dashboard[1].name}* = ${dashboard[1].success + dashboard[1].failed} Used`
 		: ``
 }
 ${
 	dashboard[2]
-		? `3. *${prefix}${dashboard[2].name}* dipakai sebanyak *${dashboard[2].success + dashboard[2].failed}* kali\n\n`
+		? `3. *${prefix}${dashboard[2].name}* = ${dashboard[2].success + dashboard[2].failed} Used\n\n`
 		: ``
 }`;
 			const keys = Object.keys(category);
 			//var a = 1
 			for (const key of keys) {
-				str += `*❏ ${key.toUpperCase()}*\n${category[key]
+				str += `*[ ${key.toUpperCase()} ]*\n${category[key]
 					.map(
 						(cmd, index) =>
-							`*${index + 1}.* *${cmd.options.noPrefix ? "" : "#"}${cmd.name}* ${
+							`あ⁩ ${cmd.options.noPrefix ? "" : "."}${cmd.name} ${
 								cmd.category == "private"
 									? ""
 									: cmd.use
-									? cmd.use.replace(">", " 」").replace("<", "「 ")
+									? cmd.use.replace(">", ">").replace("<", "<")
 									: ""
 							}`
 					)
 					.join("\n")}\n\n`;
 			}
-			str += `typing *${prefix}help sticker* for get the details and example use`;
+			str += "if you found an error, please report the owner so that it will be corrected immediately";
 			await conn.sendMessage(
 				msg.from,
 				{
-					video: { url: config.thumbvideo },
+					image: { url: config.thumb },
 					caption: str,
-					gifPlayback: true,
 					footer: config.namebot + " • " + config.ownername,
 					templateButtons: [
-						{ urlButton: { displayText: "Shortlink", url: "https://sl.rzkyfdlh.tech" } },
-						{ urlButton: { displayText: "Downloader", url: "https://down.rzkyfdlh.tech" } },
-						{ quickReplyButton: { displayText: "Script Bot📑", id: "#script" } },
-						{ quickReplyButton: { displayText: "Changelog📋", id: "#changelog" } },
-						{ quickReplyButton: { displayText: "Dashboard📊", id: "#db" } },
+						{ urlButton: { displayText: "Group ShiroBot", url: "bit.ly/AnyaBot-Group" } },
+						{ urlButton: { displayText: "Website Creator", url: "nekopoi.care" } },
+						{ quickReplyButton: { displayText: "Profile", id: "#profile" } },
+						{ quickReplyButton: { displayText: "Changelog", id: "#changelog" } },
+						{ quickReplyButton: { displayText: "Dashboard", id: "#db" } },
 					],
 				},
 				{ quoted: msg }
